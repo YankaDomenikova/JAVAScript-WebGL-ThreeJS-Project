@@ -1,5 +1,5 @@
 # JAVAScript-WebGL-ThreeJS-Project
-A simple project for 3D visualization using in Web using:
+A simple project for 3D visualization in Web using:
 - Three.js
 - WebGL
 - Tween.js
