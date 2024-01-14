@@ -1,4 +1,4 @@
-# JAVAScript-WebGL-ThreeJS-Project
+# JavaScript-WebGL-ThreeJS-Project
 A simple project for 3D visualization in Web using:
 - Three.js
 - WebGL
