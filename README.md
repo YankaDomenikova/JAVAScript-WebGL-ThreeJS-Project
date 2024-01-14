@@ -28,8 +28,8 @@ https://github.com/YankaDomenikova/JAVAScript-WebGL-ThreeJS-Project.git
  - Auto rotation mode 
 
 &nbsp;
-***
+---
 &nbsp;
 ![Screenshot](/screenshot.png)  
 
-***
+---
