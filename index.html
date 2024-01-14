@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>JAVAScript, WebGL, ThreeJS Project</title>
+		<link rel="stylesheet" href="/css/style.css">
+	</head>
+	<body>
+		<h2 class="heading">JAVAScript, WebGL, ThreeJS</h2>
+		<div class="controls-menu">
+			<input type="checkbox" id="menu-toggle" checked="true">
+			<label for="menu-toggle"  id="menu-toggle-label">
+				<img src="/icons/controls-svgrepo-com.svg" alt="">
+				<p>Model Controls</p>
+			</label>
+
+			<div class="control-buttons">
+				<button  id="toggle-fullscreen">Toggle Fullscreen</button>
+				
+				<button id="reset-button">
+					Reset Model
+					<img src="/icons/reset-svgrepo-com.svg" alt="Reset Model" >
+				</button>
+				
+				<button id="zoomInButton">
+					Zoom In
+					<img src="/icons/zoom-in-svgrepo-com.svg" alt="Zoom in" >
+				</button>
+				
+				<button id="zoomOutButton">
+					Zoom Out
+					<img src="/icons/zoom-out-svgrepo-com.svg" alt="Zoom in" >
+				</button>
+
+				<div>
+					<input type="checkbox" name="toggle-autorotate" id="toggle-autorotate" > 
+					<label for="toggle-autorotate" id="toggle-autorotate-label">Auto Rotation</label>
+				</div>
+			</div>
+		</div>
+
+		<div id="container"></div>
+
+		<script type="module" src="/main.js"></script>
+	</body>
+</html>
