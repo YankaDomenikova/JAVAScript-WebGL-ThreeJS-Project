@@ -29,4 +29,4 @@ https://github.com/YankaDomenikova/JAVAScript-WebGL-ThreeJS-Project.git
 &nbsp;
 ---
 &nbsp;
-![Screenshot](/screenshot.png)  
+![Screenshot](/project-screenshot.png)  
