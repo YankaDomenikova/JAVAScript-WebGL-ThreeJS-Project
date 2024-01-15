@@ -12,6 +12,7 @@ const toggleFullscreenBtn = document.getElementById('toggle-fullscreen');
 const toggleAutorotate = document.getElementById('toggle-autorotate');
 const zoomInButton = document.getElementById('zoomInButton');
 const zoomOutButton = document.getElementById('zoomOutButton');
+const rotationSpeedSlider = document.getElementById('rotation-speed-slider');
 
 function init() {
     scene = new THREE.Scene();
@@ -63,15 +64,16 @@ function setupControls() {
 function addEventListeners() {
     window.addEventListener('resize', onWindowResize);
 
-    resetButton.addEventListener('click', () => {
-        tweenCameraToInitialPosition();
-    });
-
+    resetButton.addEventListener('click', tweenCameraToInitialPosition);
     toggleFullscreenBtn.addEventListener('click', toggleFullscreen);
     toggleAutorotate.addEventListener('change', toggleAutoRotation);
 
+    rotationSpeedSlider.addEventListener('input', () => {
+        updateAutoRotationSpeed(parseFloat(rotationSpeedSlider.value));
+    });
+
     document.addEventListener('mousewheel', onMouseWheel, false);
-    document.addEventListener('DOMMouseScroll', onMouseWheel, false);
+    document.addEventListener('DOMMouseScroll', onMouseWheel, false);    
 }
 
 function onWindowResize() {
@@ -82,17 +84,15 @@ function onWindowResize() {
 
 function onMouseWheel(event) {
     event.preventDefault();
-    
+
     const zoomDirection = event.deltaY > 0 ? 1 : -1;
 
     const targetDistance = controls.target.distanceTo(controls.object.position) * (1 + zoomDirection * 0.1);
 
+    const newPosition = controls.object.position.clone().sub(controls.target).normalize().multiplyScalar(targetDistance).add(controls.target);
+
     new TWEEN.Tween(controls.object.position)
-        .to({
-            x: controls.target.x,
-            y: controls.target.y,
-            z: controls.target.z + targetDistance,
-        }, 500) 
+        .to({ x: newPosition.x, y: newPosition.y, z: newPosition.z }, 350) 
         .easing(TWEEN.Easing.Quadratic.Out)
         .onUpdate(() => {
             controls.update();
@@ -163,9 +163,13 @@ function tweenZoom(factor) {
         .start();
 }
 
+function updateAutoRotationSpeed(speed) {
+    controls.autoRotateSpeed = speed;
+}
+
 function toggleAutoRotation() {
     autoRotate = !autoRotate;
-    controls.autoRotate = autoRotate; 
+    controls.autoRotate = autoRotate;
 }
 
 function animate() {
